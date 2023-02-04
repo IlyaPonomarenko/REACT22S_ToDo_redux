@@ -1,24 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-export const stateSlice = createSlice({
-  name: "todo",
-  initialState: {
-    todoInfo:{
-        name: "",
-        description: "",
-    }
-  },
-  reducers: {
-    getName: (state, action) => {
-      state.todoInfo.name += action.payload;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getTask = exports.stateSlice = void 0;
+const toolkit_1 = require("@reduxjs/toolkit");
+const initialState = {
+    taskList: [],
+};
+exports.stateSlice = (0, toolkit_1.createSlice)({
+    name: "todo",
+    initialState,
+    reducers: {
+        // pure reducers to determine a state change
+        getTask: (state, action) => {
+            state.taskList.push({ task: action.payload });
+        },
     },
-    getDescription: (state, action) => {
-      state.todoInfo.description += action.payload;
-    },
-  },
 });
-
 // Action creators are generated for each case reducer function
-export const { getName, getDescription } = stateSlice.actions;
-export const stateManager = (state) => state.todo.todoInfo
-export default stateSlice.reducer;
+exports.getTask = exports.stateSlice.actions.getTask;
+exports.default = exports.stateSlice.reducer;
