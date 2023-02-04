@@ -10,6 +10,8 @@ const App_1 = require("./App");
 const react_redux_1 = require("react-redux");
 const store_1 = require("./app/store");
 const root = client_1.default.createRoot(document.getElementById("root"));
-root.render(react_1.default.createElement(react_1.default.StrictMode, null,
-    react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
-        react_1.default.createElement(App_1.App, null))));
+root.render(<react_1.default.StrictMode>
+    <react_redux_1.Provider store={store_1.store}>
+     <App_1.App />
+    </react_redux_1.Provider>
+  </react_1.default.StrictMode>);

@@ -31,13 +31,12 @@ const App = () => {
     const dispatch = (0, react_redux_1.useDispatch)();
     const [inputData, setInputData] = (0, react_1.useState)("");
     const handleSumbit = (e) => {
+        e.preventDefault();
         dispatch((0, StateSlice_1.getTask)(inputData));
     };
-    return (<div>
-            <form>
-                <input type="text" onChange={(e) => setInputData(e.target.value)}/>
-                <button onClick={handleSumbit}></button>
-            </form>
-        </div>);
+    return (react_1.default.createElement("div", null,
+        react_1.default.createElement("form", null,
+            react_1.default.createElement("input", { type: "text", onChange: (e) => setInputData(e.target.value) }),
+            react_1.default.createElement("button", { onClick: handleSumbit }, "Add a task"))));
 };
 exports.App = App;

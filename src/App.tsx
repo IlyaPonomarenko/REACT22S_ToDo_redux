@@ -1,21 +1,20 @@
-import React from 'react';
-import {useSelector, useDispatch} from "react-redux";
+import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { getTask } from './features/slices/StateSlice';
 
-const App = () => {
-  const handleSumbit = () =>{
-
-  }
-  return (
-    <div>
-      <h2>your task</h2>
-      <input type="text" name="task-name" id="" required/>
-      <h2>Description of your task</h2>
-      <button onClick={handleSumbit}></button>
-      <div className='task-container'>
-        <p></p>
-      </div>
-    </div>
-  );
+export const App= () =>{
+    const dispatch = useDispatch();
+    const [inputData, setInputData] = useState("");
+    const handleSumbit = (e: React.FormEvent) => {
+        e.preventDefault()
+        dispatch(getTask(inputData))
+    }
+    return (
+        <div>
+            <form>
+                <input type="text" onChange={(e) => setInputData(e.target.value)} />
+                <button onClick={handleSumbit}>Add a task</button>
+            </form>
+        </div>
+    );
 };
-
-export default App;
